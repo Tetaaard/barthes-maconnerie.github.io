@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Isolation en blocs de chanvre — Barthès Maçonnerie">
+  <article>
+    <h2>Isolation en blocs de chanvre</h2>
+
+    <p>
+      Réalisation d’une isolation en blocs de chanvre, solution naturelle et durable,
+      pensée pour améliorer le confort thermique tout en préservant l’environnement.
+    </p>
+
+    <p>
+      Ce type de mise en œuvre permet de conserver la respiration du bâti tout en
+      apportant une réponse performante aux enjeux contemporains d’éco-construction.
+    </p>
+
+    <section>
+      <h3>Galerie</h3>
+
+      <div class="gallery">
+        <img src="/images/realisations/isolation-chanvre/01.jpg" alt="Isolation chanvre" />
+        <img src="/images/realisations/isolation-chanvre/02.jpg" alt="Isolation chanvre" />
+        <img src="/images/realisations/isolation-chanvre/03.jpg" alt="Isolation chanvre" />
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</BaseLayout>
