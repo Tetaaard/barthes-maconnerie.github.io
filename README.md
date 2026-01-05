@@ -1,43 +1,92 @@
-# Astro Starter Kit: Minimal
+# Barthès Maçonnerie — Site vitrine
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Site vitrine de **Barthès Maçonnerie**, entreprise spécialisée en **maçonnerie traditionnelle**, **restauration du patrimoine** et **éco-construction** 🌱.  
+Le site est développé avec **Astro** et hébergé gratuitement via **GitHub Pages**.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## 🧱 Stack technique
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Astro** (site statique, rapide et durable)
+- HTML / CSS / JS
+- Hébergement : **GitHub Pages**
+- Aucun backend
+- Aucun CMS
+- Zéro dépendance serveur
+
+---
+
+## 🚀 Structure du projet
 
 ```text
 /
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+├── src/                # Code source Astro
+│   ├── layouts/
+│   └── pages/          # Pages du site (index, atelier, realisations, etc.)
+├── public/             # Assets statiques (images sources, favicon, etc.)
+├── dist/               # Site buildé par Astro (HTML final)
+├── index.html          # Copie du build pour GitHub Pages
+├── atelier/
+├── contact/
+├── realisations/
+├── savoir-faire/
+├── .nojekyll           # Désactive Jekyll sur GitHub Pages
+├── astro.config.mjs
+├── package.json
+└── README.md
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## ⚠️ Spécificité GitHub Pages (IMPORTANT)
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Ce dépôt s’appelle :
+```text
+barthes-maconnerie.github.io
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+➡️ Il s’agit d’un **User Pages repository** (`<username>.github.io`).
 
-## 🧞 Commands
+### Règle GitHub Pages
+Pour ce type de dépôt :
+- GitHub Pages **ne peut servir QUE la racine du dépôt**
+- Le dossier `dist/` **n’est jamais utilisé directement**
+- GitHub Pages **ne comprend pas Astro**
+- GitHub tente par défaut de builder le site avec **Jekyll**
 
-All commands are run from the root of the project, from a terminal:
+👉 Jekyll est explicitement désactivé via le fichier `.nojekyll`.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+---
 
-## 👀 Want to learn more?
+## 🛠️ Workflow de déploiement (obligatoire)
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### 1️⃣ Build du site avec Astro
+
+```sh
+npm run build
+```
+
+Le site statique est généré dans le dossier dist/ :
+
+```sh
+dist/
+├── index.html
+├── atelier/
+├── contact/
+├── realisations/
+├── savoir-faire/
+```
+### 2️⃣ Copier le build à la racine du dépôt
+⚠️ Étape indispensable pour GitHub Pages
+
+```sh
+cp -r dist/* .
+```
+
+Cela place les fichiers HTML directement à la racine du repo, ce que GitHub Pages peut servir.
+
+## 🌍 Accès au site
+
+Le site est accessible à l’adresse suivante :
+
+```sh
+https://tetaaard.github.io/barthes-maconnerie.github.io/
+```
