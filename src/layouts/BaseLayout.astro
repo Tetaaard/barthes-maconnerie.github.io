@@ -9,18 +9,28 @@ const { title = "Barthès Maçonnerie" } = Astro.props;
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
 
-  <meta name="description" content="Maçonnerie traditionnelle, restauration du patrimoine et éco-construction. Savoir-faire artisanal." />
+  <meta
+    name="description"
+    content="Maçonnerie traditionnelle, restauration du patrimoine et éco-construction. Savoir-faire artisanal."
+  />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     :root {
       --bg: #f6f4ef;
       --text: #1e1e1e;
       --muted: #6f6f6f;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -34,6 +44,7 @@ const { title = "Barthès Maçonnerie" } = Astro.props;
     h1, h2, h3 {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
+      margin-top: 0;
     }
 
     a {
@@ -41,10 +52,25 @@ const { title = "Barthès Maçonnerie" } = Astro.props;
       text-decoration: none;
     }
 
-    header, footer {
+    header,
+    footer {
       padding: 2rem;
       max-width: 1200px;
       margin: auto;
+    }
+
+    header h1 {
+      margin-bottom: 0.5rem;
+    }
+
+    nav a {
+      margin-right: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--text);
     }
 
     main {
@@ -53,10 +79,74 @@ const { title = "Barthès Maçonnerie" } = Astro.props;
       padding: 2rem;
     }
 
-    nav a {
-      margin-right: 1.5rem;
-      font-size: 0.95rem;
+    section {
+      margin-bottom: 4rem;
+    }
+
+    /* Articles & projets */
+
+    article {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    article h2 {
+      margin-bottom: 1rem;
+    }
+
+    article h3 {
+      margin-bottom: 0.3rem;
+    }
+
+    article p {
+      margin-bottom: 1.2rem;
+      color: #2a2a2a;
+    }
+
+    article ul {
+      margin-left: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    article li {
+      margin-bottom: 0.4rem;
+    }
+
+    /* Galerie */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Footer */
+
+    footer p {
+      font-size: 0.85rem;
       color: var(--muted);
+    }
+
+    /* Responsive léger */
+
+    @media (max-width: 768px) {
+      header,
+      footer,
+      main {
+        padding: 1.5rem;
+      }
+
+      nav a {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+      }
     }
   </style>
 </head>
@@ -78,7 +168,9 @@ const { title = "Barthès Maçonnerie" } = Astro.props;
   </main>
 
   <footer>
-    <p>© {new Date().getFullYear()} — Pierre Barthès · Maçonnerie traditionnelle & patrimoine</p>
+    <p>
+      © {new Date().getFullYear()} — Pierre Barthès · Maçonnerie traditionnelle & patrimoine
+    </p>
   </footer>
 </body>
 </html>
