@@ -87,6 +87,4 @@ Cela place les fichiers HTML directement à la racine du repo, ce que GitHub Pag
 
 Le site est accessible à l’adresse suivante :
 
-```sh
 https://tetaaard.github.io/barthes-maconnerie.github.io/
-```
