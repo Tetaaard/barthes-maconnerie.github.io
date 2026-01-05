@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Réalisations — Barthès Maçonnerie">
@@ -8,7 +10,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <article>
       <h3>
-        <a href="/realisations/isolation-chanvre">
+        <a href={`${base}realisations/isolation-chanvre/`}>
           Isolation en blocs de chanvre
         </a>
       </h3>
@@ -20,7 +22,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <article>
       <h3>
-        <a href="/realisations/bibliotheque-xvii">
+        <a href={`${base}realisations/bibliotheque-xvii/`}>
           Bibliothèque du XVIIᵉ siècle
         </a>
       </h3>
@@ -33,7 +35,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <article>
       <h3>
-        <a href="/realisations/eglise-xve">
+        <a href={`${base}realisations/eglise-xve/`}>
           Église du XVᵉ siècle
         </a>
       </h3>
@@ -45,7 +47,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <article>
       <h3>
-        <a href="/realisations/bati-vivant">
+        <a href={`${base}realisations/bati-vivant/`}>
           Bâti vivant – Terre, chaux et matériaux recyclés
         </a>
       </h3>
@@ -57,7 +59,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <article>
       <h3>
-        <a href="/realisations/cheminee">
+        <a href={`${base}realisations/cheminee/`}>
           Restauration de cheminée
         </a>
       </h3>
@@ -69,7 +71,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <article>
       <h3>
-        <a href="/realisations/restauration-bordeaux">
+        <a href={`${base}realisations/restauration-bordeaux/`}>
           Restauration du bâti ancien – Bordeaux
         </a>
       </h3>
@@ -81,7 +83,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <article>
       <h3>
-        <a href="/realisations/terre-chaux-la-paz">
+        <a href={`${base}realisations/terre-chaux-la-paz/`}>
           Enduits terre et chaux – La Paz, Bolivie
         </a>
       </h3>
