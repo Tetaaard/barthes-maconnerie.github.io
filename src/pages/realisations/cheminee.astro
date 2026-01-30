@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Restauration de cheminée — Barthès Maçonnerie">
@@ -13,7 +14,59 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     <p>
       Travail artisanal visant à redonner cohérence, solidité et lecture
-      architecturale à l’ouvrage.
+      architecturale à l’ouvrage, en s’appuyant sur des techniques et matériaux
+      compatibles avec le bâti ancien.
     </p>
+
+    <!-- Carousel -->
+    <div class="carousel">
+      <div class="carousel-track">
+        <img
+          src={`${base}images/realisations/cheminee/01.jpg`}
+          alt="Restauration de cheminée – état initial"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/cheminee/02.jpg`}
+          alt="Travail de reprise de la cheminée"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/cheminee/03.jpg`}
+          alt="Application de l’enduit traditionnel"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/cheminee/04.jpg`}
+          alt="Cheminée restaurée – vue finale"
+          loading="lazy"
+        />
+      </div>
+
+      <button class="carousel-btn prev" aria-label="Image précédente">‹</button>
+      <button class="carousel-btn next" aria-label="Image suivante">›</button>
+    </div>
   </article>
+
+  <script>
+    const carousel = document.querySelector(".carousel");
+    if (carousel) {
+      const track = carousel.querySelector(".carousel-track");
+      const prevBtn = carousel.querySelector(".carousel-btn.prev");
+      const nextBtn = carousel.querySelector(".carousel-btn.next");
+
+      const getSlideWidth = () => {
+        const img = track.querySelector("img");
+        return img ? img.getBoundingClientRect().width + 16 : 0;
+      };
+
+      prevBtn.addEventListener("click", () => {
+        track.scrollBy({ left: -getSlideWidth(), behavior: "smooth" });
+      });
+
+      nextBtn.addEventListener("click", () => {
+        track.scrollBy({ left: getSlideWidth(), behavior: "smooth" });
+      });
+    }
+  </script>
 </BaseLayout>

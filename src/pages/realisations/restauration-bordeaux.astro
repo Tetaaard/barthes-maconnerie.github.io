@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -30,19 +29,55 @@ const base = import.meta.env.BASE_URL;
       patrimoine, où la compréhension du bâti guide chaque décision technique.
     </p>
 
-    <div class="gallery">
-      <img
-        src={`${base}images/realisations/restauration-bordeaux/01.jpg`}
-        alt="Restauration du bâti ancien en pierre à Bordeaux"
-      />
-      <img
-        src={`${base}images/realisations/restauration-bordeaux/02.jpg`}
-        alt="Travaux de maçonnerie traditionnelle sur bâti ancien à Bordeaux"
-      />
-      <img
-        src={`${base}images/realisations/restauration-bordeaux/03.jpg`}
-        alt="Détails de restauration de maçonnerie en pierre"
-      />
+    <!-- Carousel -->
+    <div class="carousel">
+      <div class="carousel-track">
+        <img
+          src={`${base}images/realisations/restauration-bordeaux/01.jpg`}
+          alt="Restauration du bâti ancien en pierre à Bordeaux"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/restauration-bordeaux/02.jpg`}
+          alt="Travaux de maçonnerie traditionnelle sur bâti ancien à Bordeaux"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/restauration-bordeaux/03.jpg`}
+          alt="Détails de restauration de maçonnerie en pierre"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/restauration-bordeaux/04.jpg`}
+          alt="Restitution des volumes et finitions sur bâti ancien"
+          loading="lazy"
+        />
+      </div>
+
+      <button class="carousel-btn prev" aria-label="Image précédente">‹</button>
+      <button class="carousel-btn next" aria-label="Image suivante">›</button>
     </div>
   </article>
+
+  <script>
+    const carousel = document.querySelector(".carousel");
+    if (carousel) {
+      const track = carousel.querySelector(".carousel-track");
+      const prevBtn = carousel.querySelector(".carousel-btn.prev");
+      const nextBtn = carousel.querySelector(".carousel-btn.next");
+
+      const getSlideWidth = () => {
+        const img = track.querySelector("img");
+        return img ? img.getBoundingClientRect().width + 16 : 0;
+      };
+
+      prevBtn.addEventListener("click", () => {
+        track.scrollBy({ left: -getSlideWidth(), behavior: "smooth" });
+      });
+
+      nextBtn.addEventListener("click", () => {
+        track.scrollBy({ left: getSlideWidth(), behavior: "smooth" });
+      });
+    }
+  </script>
 </BaseLayout>

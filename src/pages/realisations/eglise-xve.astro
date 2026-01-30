@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Restauration d’une église du XVᵉ siècle — Barthès Maçonnerie">
@@ -13,7 +14,59 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     <p>
       Un travail mené dans le respect du bâti ancien et du savoir-faire traditionnel,
-      où chaque intervention vise à préserver l’authenticité de l’ouvrage.
+      où chaque intervention vise à préserver l’authenticité de l’ouvrage
+      et la cohérence architecturale de l’ensemble.
     </p>
+
+    <!-- Carousel -->
+    <div class="carousel">
+      <div class="carousel-track">
+        <img
+          src={`${base}images/realisations/eglise-xve/01.jpg`}
+          alt="Église du XVᵉ siècle – vue intérieure"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/eglise-xve/02.jpg`}
+          alt="Restauration des arcs brisés"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/eglise-xve/03.jpg`}
+          alt="Enduit traditionnel à la chaux lissée"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/eglise-xve/04.jpg`}
+          alt="Patinage et intégration à l’existant"
+          loading="lazy"
+        />
+      </div>
+
+      <button class="carousel-btn prev" aria-label="Image précédente">‹</button>
+      <button class="carousel-btn next" aria-label="Image suivante">›</button>
+    </div>
   </article>
+
+  <script>
+    const carousel = document.querySelector(".carousel");
+    if (carousel) {
+      const track = carousel.querySelector(".carousel-track");
+      const prevBtn = carousel.querySelector(".carousel-btn.prev");
+      const nextBtn = carousel.querySelector(".carousel-btn.next");
+
+      const getSlideWidth = () => {
+        const img = track.querySelector("img");
+        return img ? img.getBoundingClientRect().width + 16 : 0;
+      };
+
+      prevBtn.addEventListener("click", () => {
+        track.scrollBy({ left: -getSlideWidth(), behavior: "smooth" });
+      });
+
+      nextBtn.addEventListener("click", () => {
+        track.scrollBy({ left: getSlideWidth(), behavior: "smooth" });
+      });
+    }
+  </script>
 </BaseLayout>

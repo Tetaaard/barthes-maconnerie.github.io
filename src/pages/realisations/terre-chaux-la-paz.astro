@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Enduits terre et chaux — La Paz, Bolivie · Barthès Maçonnerie">
@@ -31,11 +32,55 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       communautaire.
     </p>
 
-    <div class="gallery">
-      <!-- Images à ajouter -->
-      <!--
-      <img src="/images/realisations/terre-chaux-la-paz/01.jpg" alt="Enduit terre chaux La Paz" />
-      -->
+    <!-- Carousel -->
+    <div class="carousel">
+      <div class="carousel-track">
+        <img
+          src={`${base}images/realisations/terre-chaux-la-paz/01.jpg`}
+          alt="Enduits terre et chaux – chantier à La Paz"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/terre-chaux-la-paz/02.jpg`}
+          alt="Application d’enduit terre/chaux en altitude"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/terre-chaux-la-paz/03.jpg`}
+          alt="Détails d’enduit terre et chaux sur matériaux recyclés"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/terre-chaux-la-paz/04.jpg`}
+          alt="Tour restaurée – enduits terre et chaux"
+          loading="lazy"
+        />
+      </div>
+
+      <button class="carousel-btn prev" aria-label="Image précédente">‹</button>
+      <button class="carousel-btn next" aria-label="Image suivante">›</button>
     </div>
   </article>
+
+  <script>
+    const carousel = document.querySelector(".carousel");
+    if (carousel) {
+      const track = carousel.querySelector(".carousel-track");
+      const prevBtn = carousel.querySelector(".carousel-btn.prev");
+      const nextBtn = carousel.querySelector(".carousel-btn.next");
+
+      const getSlideWidth = () => {
+        const img = track.querySelector("img");
+        return img ? img.getBoundingClientRect().width + 16 : 0;
+      };
+
+      prevBtn.addEventListener("click", () => {
+        track.scrollBy({ left: -getSlideWidth(), behavior: "smooth" });
+      });
+
+      nextBtn.addEventListener("click", () => {
+        track.scrollBy({ left: getSlideWidth(), behavior: "smooth" });
+      });
+    }
+  </script>
 </BaseLayout>

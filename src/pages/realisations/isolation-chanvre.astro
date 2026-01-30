@@ -1,6 +1,38 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
 ---
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.querySelector(".carousel");
+    if (!carousel) return;
+
+    const track = carousel.querySelector(".carousel-track");
+    const prevBtn = carousel.querySelector(".carousel-btn.prev");
+    const nextBtn = carousel.querySelector(".carousel-btn.next");
+
+    if (!track || !prevBtn || !nextBtn) return;
+
+    const getSlideWidth = () => {
+      const firstImage = track.querySelector("img");
+      return firstImage ? firstImage.getBoundingClientRect().width + 16 : 0;
+    };
+
+    prevBtn.addEventListener("click", () => {
+      track.scrollBy({
+        left: -getSlideWidth(),
+        behavior: "smooth"
+      });
+    });
+
+    nextBtn.addEventListener("click", () => {
+      track.scrollBy({
+        left: getSlideWidth(),
+        behavior: "smooth"
+      });
+    });
+  });
+</script>
 
 <BaseLayout title="Isolation en blocs de chanvre — Barthès Maçonnerie">
   <article>
@@ -16,10 +48,37 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       une réponse cohérente aux enjeux contemporains de l’éco-construction.
     </p>
 
-    <div class="gallery">
-      <img src="/images/realisations/isolation-chanvre/01.jpg" alt="Isolation en blocs de chanvre" />
-      <img src="/images/realisations/isolation-chanvre/02.jpg" alt="Détail maçonnerie chanvre" />
-      <img src="/images/realisations/isolation-chanvre/03.jpg" alt="Vue intérieure isolation chanvre" />
+    <div class="carousel">
+      <div class="carousel-track">
+        <img
+          src={`${base}images/realisations/isolation-chanvre/01.jpg`}
+          alt="Isolation en blocs de chanvre – vue d’ensemble"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/isolation-chanvre/02.jpg`}
+          alt="Détail de mise en œuvre des blocs de chanvre"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/isolation-chanvre/03.jpg`}
+          alt="Isolation en blocs de chanvre – intérieur"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/isolation-chanvre/04.jpg`}
+          alt="Chantier d’isolation chanvre en cours"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/isolation-chanvre/05.jpg`}
+          alt="Finition de l’isolation en blocs de chanvre"
+          loading="lazy"
+        />
+      </div>
+
+      <button class="carousel-btn prev" aria-label="Image précédente">‹</button>
+      <button class="carousel-btn next" aria-label="Image suivante">›</button>
     </div>
   </article>
 </BaseLayout>

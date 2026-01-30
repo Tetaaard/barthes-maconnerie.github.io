@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Bâti vivant — Terre, chaux et matériaux recyclés — Barthès Maçonnerie">
@@ -22,5 +23,56 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       Une intervention alliant matériaux écologiques, mise en œuvre traditionnelle
       et engagement sur un projet d’intérêt communautaire.
     </p>
+
+    <!-- Carousel -->
+    <div class="carousel">
+      <div class="carousel-track">
+        <img
+          src={`${base}images/realisations/bati-vivant/01.jpg`}
+          alt="Bâti vivant – chantier en matériaux recyclés"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/bati-vivant/02.jpg`}
+          alt="Enduit terre et chaux – mise en œuvre"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/bati-vivant/03.jpg`}
+          alt="Bâti vivant – vue générale de la tour"
+          loading="lazy"
+        />
+        <img
+          src={`${base}images/realisations/bati-vivant/04.jpg`}
+          alt="Détail d’enduit terre/chaux"
+          loading="lazy"
+        />
+      </div>
+
+      <button class="carousel-btn prev" aria-label="Image précédente">‹</button>
+      <button class="carousel-btn next" aria-label="Image suivante">›</button>
+    </div>
   </article>
+
+  <script>
+    const carousel = document.querySelector(".carousel");
+    if (carousel) {
+      const track = carousel.querySelector(".carousel-track");
+      const prevBtn = carousel.querySelector(".carousel-btn.prev");
+      const nextBtn = carousel.querySelector(".carousel-btn.next");
+
+      const getSlideWidth = () => {
+        const img = track.querySelector("img");
+        return img ? img.getBoundingClientRect().width + 16 : 0;
+      };
+
+      prevBtn.addEventListener("click", () => {
+        track.scrollBy({ left: -getSlideWidth(), behavior: "smooth" });
+      });
+
+      nextBtn.addEventListener("click", () => {
+        track.scrollBy({ left: getSlideWidth(), behavior: "smooth" });
+      });
+    }
+  </script>
 </BaseLayout>
