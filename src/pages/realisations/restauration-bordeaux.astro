@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Restauration du bâti ancien — Bordeaux · Barthès Maçonnerie">
@@ -29,10 +31,18 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     </p>
 
     <div class="gallery">
-      <!-- Images à ajouter -->
-      <!--
-      <img src="/images/realisations/restauration-bordeaux/01.jpg" alt="Restauration pierre Bordeaux" />
-      -->
+      <img
+        src={`${base}images/realisations/restauration-bordeaux/01.jpg`}
+        alt="Restauration du bâti ancien en pierre à Bordeaux"
+      />
+      <img
+        src={`${base}images/realisations/restauration-bordeaux/02.jpg`}
+        alt="Travaux de maçonnerie traditionnelle sur bâti ancien à Bordeaux"
+      />
+      <img
+        src={`${base}images/realisations/restauration-bordeaux/03.jpg`}
+        alt="Détails de restauration de maçonnerie en pierre"
+      />
     </div>
   </article>
 </BaseLayout>
