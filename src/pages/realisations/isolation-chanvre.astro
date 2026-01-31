@@ -2,37 +2,6 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 const base = import.meta.env.BASE_URL;
 ---
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const carousel = document.querySelector(".carousel");
-    if (!carousel) return;
-
-    const track = carousel.querySelector(".carousel-track");
-    const prevBtn = carousel.querySelector(".carousel-btn.prev");
-    const nextBtn = carousel.querySelector(".carousel-btn.next");
-
-    if (!track || !prevBtn || !nextBtn) return;
-
-    const getSlideWidth = () => {
-      const firstImage = track.querySelector("img");
-      return firstImage ? firstImage.getBoundingClientRect().width + 16 : 0;
-    };
-
-    prevBtn.addEventListener("click", () => {
-      track.scrollBy({
-        left: -getSlideWidth(),
-        behavior: "smooth"
-      });
-    });
-
-    nextBtn.addEventListener("click", () => {
-      track.scrollBy({
-        left: getSlideWidth(),
-        behavior: "smooth"
-      });
-    });
-  });
-</script>
 
 <BaseLayout title="Isolation en blocs de chanvre — Barthès Maçonnerie">
   <article>
@@ -81,4 +50,35 @@ const base = import.meta.env.BASE_URL;
       <button class="carousel-btn next" aria-label="Image suivante">›</button>
     </div>
   </article>
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.querySelector(".carousel");
+    if (!carousel) return;
+
+    const track = carousel.querySelector(".carousel-track");
+    const slides = Array.from(track.children);
+    const prevBtn = carousel.querySelector(".carousel-btn.prev");
+    const nextBtn = carousel.querySelector(".carousel-btn.next");
+
+    let index = 0;
+
+    const goToSlide = (i) => {
+      index = Math.max(0, Math.min(i, slides.length - 1));
+      slides[index].scrollIntoView({
+        behavior: "smooth",
+        inline: "center"
+      });
+    };
+
+    prevBtn?.addEventListener("click", () => {
+      goToSlide(index - 1);
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      goToSlide(index + 1);
+    });
+  });
+</script>
+
+
 </BaseLayout>

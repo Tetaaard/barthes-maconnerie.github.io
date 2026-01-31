@@ -58,26 +58,34 @@ const base = import.meta.env.BASE_URL;
       <button class="carousel-btn next" aria-label="Image suivante">›</button>
     </div>
   </article>
-
-  <script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
     const carousel = document.querySelector(".carousel");
-    if (carousel) {
-      const track = carousel.querySelector(".carousel-track");
-      const prevBtn = carousel.querySelector(".carousel-btn.prev");
-      const nextBtn = carousel.querySelector(".carousel-btn.next");
+    if (!carousel) return;
 
-      const getSlideWidth = () => {
-        const img = track.querySelector("img");
-        return img ? img.getBoundingClientRect().width + 16 : 0;
-      };
+    const track = carousel.querySelector(".carousel-track");
+    const slides = Array.from(track.children);
+    const prevBtn = carousel.querySelector(".carousel-btn.prev");
+    const nextBtn = carousel.querySelector(".carousel-btn.next");
 
-      prevBtn.addEventListener("click", () => {
-        track.scrollBy({ left: -getSlideWidth(), behavior: "smooth" });
+    let index = 0;
+
+    const goToSlide = (i) => {
+      index = Math.max(0, Math.min(i, slides.length - 1));
+      slides[index].scrollIntoView({
+        behavior: "smooth",
+        inline: "center"
       });
+    };
 
-      nextBtn.addEventListener("click", () => {
-        track.scrollBy({ left: getSlideWidth(), behavior: "smooth" });
-      });
-    }
-  </script>
+    prevBtn?.addEventListener("click", () => {
+      goToSlide(index - 1);
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      goToSlide(index + 1);
+    });
+  });
+</script>
+
 </BaseLayout>
