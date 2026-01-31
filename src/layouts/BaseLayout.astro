@@ -98,6 +98,11 @@ const base = import.meta.env.BASE_URL;
       margin-bottom: 1.2rem;
       color: #2a2a2a;
     }
+    
+    :global(h2) {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+    }
 
     /* ========================= */
     /* === PROJECTS GRID ======= */
@@ -402,6 +407,7 @@ const base = import.meta.env.BASE_URL;
   display: flex;
   gap: 2.2rem;
   padding-top: 5rem;
+}
 .main-nav a {
   font-size: 0.95rem;
   color: var(--muted);
@@ -411,7 +417,6 @@ const base = import.meta.env.BASE_URL;
 .main-nav a:hover {
   color: var(--text);
 }
-
 /* ========================= */
 /* === RESPONSIVE HEADER ==== */
 /* ========================= */
@@ -427,6 +432,67 @@ const base = import.meta.env.BASE_URL;
     padding-top: 0; /* reset mobile */
     flex-wrap: wrap;
     gap: 1.4rem;
+  }
+}
+/* ========================= */
+/* === SAVOIR-FAIRE GRID ==== */
+/* ========================= */
+
+:global(.savoir-faire) {
+  max-width: 1100px;
+  margin: auto;
+}
+
+:global(.savoir-faire-header) {
+  margin-bottom: 3rem;
+}
+
+:global(.savoir-faire-header p) {
+  max-width: 620px;
+  color: var(--muted);
+}
+
+/* ✅ GRILLE 2 x 2 */
+:global(.savoir-faire-grid) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+/* Carte */
+:global(.savoir-faire-item) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+/* Image */
+:global(.savoir-faire-item img) {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
+/* Texte */
+:global(.savoir-faire-item h3) {
+  margin-top: 0.6rem;
+}
+
+:global(.savoir-faire-item p) {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* 📱 Mobile */
+@media (max-width: 800px) {
+  :global(.savoir-faire-grid) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  :global(.savoir-faire-item img) {
+    max-width: 260px;
   }
 }
 

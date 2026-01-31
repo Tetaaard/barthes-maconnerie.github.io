@@ -1,35 +1,61 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Savoir-faire — Barthès Maçonnerie">
-  <section>
-    <h2>Savoir-faire</h2>
+  <section class="savoir-faire">
 
-    <h3>Maçonnerie traditionnelle</h3>
-    <p>
-      Mise en œuvre de maçonneries en pierre, brique et matériaux traditionnels,
-      dans le respect des techniques anciennes et de la cohérence structurelle
-      des ouvrages.
-    </p>
+    <header class="savoir-faire-header">
+      <h2>Savoir-faire</h2>
+      <p>
+        Un travail artisanal ancré dans les techniques traditionnelles,
+        au service du bâti ancien et de la construction durable.
+      </p>
+    </header>
 
-    <h3>Restauration du patrimoine</h3>
-    <p>
-      Intervention sur bâtiments anciens et patrimoniaux, églises, maisons de
-      caractère et ouvrages historiques. Travail respectueux de l’existant,
-      sans altération de la lecture architecturale.
-    </p>
+    <!-- 🔑 GRILLE -->
+    <div class="savoir-faire-grid">
 
-    <h3>Enduits à la chaux</h3>
-    <p>
-      Réalisation d’enduits traditionnels à la chaux aérienne ou hydraulique,
-      compatibles avec les supports anciens et favorisant la respiration des murs.
-    </p>
+      <div class="savoir-faire-item">
+        <img src={`${base}images/savoir-faire/maconnerie.png`} alt="Maçonnerie traditionnelle" />
+        <h3>Maçonnerie traditionnelle</h3>
+        <p>
+          Mise en œuvre de maçonneries en pierre, brique et matériaux traditionnels,
+          dans le respect des techniques anciennes et de la cohérence structurelle
+          des ouvrages.
+        </p>
+      </div>
 
-    <h3>Éco-construction</h3>
-    <p>
-      Utilisation de matériaux biosourcés tels que le chanvre, la terre ou la chaux,
-      dans une démarche de construction durable et responsable.
-    </p>
+      <div class="savoir-faire-item">
+        <img src={`${base}images/savoir-faire/patrimoine.png`} alt="Restauration du patrimoine" />
+        <h3>Restauration du patrimoine</h3>
+        <p>
+          Intervention sur bâtiments anciens et patrimoniaux, églises,
+          maisons de caractère et ouvrages historiques, sans altérer
+          la lecture architecturale existante.
+        </p>
+      </div>
+
+      <div class="savoir-faire-item">
+        <img src={`${base}images/savoir-faire/chaux.png`} alt="Enduits à la chaux" />
+        <h3>Enduits à la chaux</h3>
+        <p>
+          Réalisation d’enduits à la chaux aérienne ou hydraulique,
+          compatibles avec les supports anciens et favorisant la
+          respiration des murs.
+        </p>
+      </div>
+
+      <div class="savoir-faire-item">
+        <img src={`${base}images/savoir-faire/eco.png`} alt="Éco-construction" />
+        <h3>Éco-construction</h3>
+        <p>
+          Utilisation de matériaux biosourcés tels que le chanvre,
+          la terre ou la chaux, dans une démarche durable et responsable.
+        </p>
+      </div>
+
+    </div>
   </section>
 </BaseLayout>
