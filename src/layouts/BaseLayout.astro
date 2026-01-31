@@ -366,17 +366,21 @@ const base = import.meta.env.BASE_URL;
 /* ========================= */
 
 .site-header {
-  max-width: 1200px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  max-width: 1600px;
   margin: auto;
-  padding: 2.5rem 2rem;
+  background: var(--bg);
 }
 
 .site-header-inner {
+  max-width: 1200px;
+  margin: auto;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; /* alignement visuel, pas centré */
+  align-items: flex-start;
 }
-
 /* Logo */
 .brand {
   display: flex;
@@ -420,9 +424,10 @@ const base = import.meta.env.BASE_URL;
 
 @media (max-width: 900px) {
   .site-header-inner {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
-    gap: 1.6rem;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   .main-nav {
@@ -493,29 +498,117 @@ const base = import.meta.env.BASE_URL;
   }
 }
 
+/* ========================= */
+/* === BURGER BUTTON ======= */
+/* ========================= */
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.burger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--brand-main);
+  margin: 6px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ========================= */
+/* === BURGER ANIMATION ==== */
+/* ========================= */
+
+.burger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ========================= */
+/* === MOBILE NAVIGATION === */
+/* ========================= */
+
+@media (max-width: 900px) {
+  .brand {
+    flex: 1;
+  }
+
+  .burger {
+    display: block;
+    margin-left: auto;
+    margin-top: 0;
+  }
+
+  /* ⛔️ Menu caché par défaut en mobile */
+  .main-nav {
+    display: none;
+    width: 100%;
+    padding-top: 0;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+  /* ✅ Menu visible uniquement quand ouvert */
+  .main-nav.open {
+    display: flex;
+  }
+}
+
   </style>
 </head>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.main-nav');
 
+    if (!burger || !nav) return;
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      nav.classList.toggle('open');
+    });
+  });
+</script>
 <body>
 <header class="site-header">
-  <div class="site-header-inner">
-    <div class="brand">
-      <span class="brand-name">
-        Pierre<br />Barthes
-      </span>
-      <span class="brand-tagline">
-        ARTISAN BÂTISSEUR
-      </span>
-    </div>
-
-    <nav class="main-nav">
-      <a href={`${base}`}>Accueil</a>
-      <a href={`${base}atelier/`}>L’Atelier</a>
-      <a href={`${base}savoir-faire/`}>Savoir-faire</a>
-      <a href={`${base}realisations/`}>Réalisations</a>
-      <a href={`${base}contact/`}>Contact</a>
-    </nav>
+<div class="site-header-inner">
+  <div class="brand">
+    <span class="brand-name">
+      Pierre<br />Barthes
+    </span>
+    <span class="brand-tagline">
+      ARTISAN BÂTISSEUR
+    </span>
   </div>
+
+  <!-- 🍔 Bouton burger -->
+  <button class="burger" aria-label="Ouvrir le menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="main-nav">
+    <a href={`${base}`}>Accueil</a>
+    <a href={`${base}atelier/`}>L’Atelier</a>
+    <a href={`${base}savoir-faire/`}>Savoir-faire</a>
+    <a href={`${base}realisations/`}>Réalisations</a>
+    <a href={`${base}contact/`}>Contact</a>
+  </nav>
+</div>
+
 </header>
 
   <main>
