@@ -31,6 +31,8 @@ const base = import.meta.env.BASE_URL;
       --beige: #f1ede4;
       --dark: #2f3441;
       --brown: #3e2721;
+      --brand-main: #6b2e2a;   /* brun/bordeaux du logo */
+      --brand-muted: #8a6f6a;
     }
 
     * {
@@ -357,20 +359,93 @@ const base = import.meta.env.BASE_URL;
       font-size: 0.85rem;
       color: var(--muted);
     }
+
+    /* ========================= */
+    /* === HEADER BRAND ======== */
+    /* ========================= */
+
+    .site-header {
+      max-width: 1200px;
+      margin: auto;
+      padding: 3rem 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      line-height: 1.05;
+      color: var(--brand-main);
+    }
+
+    .brand-tagline {
+      margin-top: 0.6rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--brand-muted);
+    }
+
+    .main-nav {
+      margin-top: 1.2rem;
+    }
+
+    .main-nav a {
+      margin-left: 1.8rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .main-nav a:hover {
+      color: var(--text);
+    }
+
+    /* Responsive header */
+    @media (max-width: 900px) {
+      .site-header {
+        flex-direction: column;
+        gap: 1.8rem;
+      }
+
+      .main-nav {
+        margin-top: 0;
+      }
+
+      .main-nav a {
+        margin-left: 0;
+        margin-right: 1.4rem;
+      }
+    }
+
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Barthès Maçonnerie</h1>
-    <nav>
-      <a href={`${base}`}>Accueil</a>
-      <a href={`${base}atelier/`}>L’Atelier</a>
-      <a href={`${base}savoir-faire/`}>Savoir-faire</a>
-      <a href={`${base}realisations/`}>Réalisations</a>
-      <a href={`${base}contact/`}>Contact</a>
-    </nav>
-  </header>
+ <header class="site-header">
+  <div class="brand">
+    <span class="brand-name">
+      Pierre<br />Barthes
+    </span>
+    <span class="brand-tagline">
+      Artisan bâtisseur
+    </span>
+  </div>
+
+  <nav class="main-nav">
+    <a href={`${base}`}>Accueil</a>
+    <a href={`${base}atelier/`}>L’Atelier</a>
+    <a href={`${base}savoir-faire/`}>Savoir-faire</a>
+    <a href={`${base}realisations/`}>Réalisations</a>
+    <a href={`${base}contact/`}>Contact</a>
+  </nav>
+</header>
 
   <main>
     <slot />
