@@ -1,26 +1,48 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="L’Atelier — Barthès Maçonnerie">
-  <section>
-    <h2>L’Atelier</h2>
+  <section class="atelier-alt">
+  <div class="atelier-inner">
 
-    <p>
-      Barthès Maçonnerie est un atelier spécialisé en maçonnerie traditionnelle,
-      restauration du patrimoine et éco-construction.
-    </p>
+    <!-- BLOC 1 -->
+    <div class="atelier-row">
+      <div class="atelier-media">
+        <img src={`${base}images/atelier/atelier-1.jpg`} alt="Vue générale de l’atelier" />
+      </div>
 
-    <p>
-      Chaque intervention est pensée dans le respect du bâti ancien, des matériaux
-      et des techniques traditionnelles. Le geste juste, la compréhension des
-      ouvrages existants et la durabilité guident chaque chantier.
-    </p>
+      <div class="atelier-content">
+        <h2>L’Atelier</h2>
+        <p class="atelier-lead">
+          Un espace ouvert, pensé comme un terrain de jeu créatif.
+        </p>
+        <p>
+          L’atelier est un lieu de recherche, d’expérimentation et de fabrication,
+          où chaque projet commence par la compréhension du matériau et du geste.
+        </p>
+      </div>
+    </div>
 
-    <p>
-      Pierre Barthès exerce une maçonnerie ancrée dans le savoir-faire artisanal,
-      attentive à la respiration des murs, à la compatibilité des matériaux
-      et à la transmission des pratiques anciennes.
-    </p>
-  </section>
+    <!-- BLOC 2 -->
+    <div class="atelier-row reverse">
+      <div class="atelier-content">
+        <h3>Les gestes</h3>
+        <p class="atelier-lead">
+          Ici, on façonne, on teste, on rate, on recommence.
+        </p>
+        <p>
+          Le travail manuel impose son rythme. Chaque étape participe
+          à la qualité de l’ouvrage et à la transmission des savoir-faire.
+        </p>
+      </div>
+
+      <div class="atelier-media">
+        <img src={`${base}images/atelier/atelier-2.jpg`} alt="Vie intérieure de l’atelier" />
+      </div>
+    </div>
+
+  </div>
+</section>
 </BaseLayout>

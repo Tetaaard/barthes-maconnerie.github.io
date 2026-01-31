@@ -125,7 +125,7 @@ body {
       position: relative;
       display: block;
       overflow: hidden;
-      border-radius: 6px; /* très léger */
+      border-radius: 3px; /* très léger */
       background: #000;
     }
 
@@ -574,6 +574,77 @@ body {
     display: flex;
   }
 }
+
+/* ========================= */
+/* === ATELIER ALTERNÉ ===== */
+/* ========================= */
+
+:global(.atelier-alt) {
+  width: 100%;
+  padding: 4rem 0;
+}
+
+:global(.atelier-inner) {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+:global(.atelier-row) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Inversion visuelle */
+:global(.atelier-row.reverse) {
+  grid-template-areas: "content media";
+}
+
+:global(.atelier-row:not(.reverse)) {
+  grid-template-areas: "media content";
+}
+
+:global(.atelier-media) {
+  grid-area: media;
+}
+
+:global(.atelier-content) {
+  grid-area: content;
+  max-width: 460px;
+}
+
+:global(.atelier-media img) {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+}
+
+:global(.atelier-lead) {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  :global(.atelier-row),
+  :global(.atelier-row.reverse) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "media"
+      "content";
+    gap: 2rem;
+  }
+
+  :global(.atelier-content) {
+    max-width: 100%;
+  }
+}
+
 
   </style>
 </head>
