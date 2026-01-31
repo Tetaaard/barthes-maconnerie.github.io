@@ -30,6 +30,7 @@ const base = import.meta.env.BASE_URL;
       --muted: #6f6f6f;
       --beige: #f1ede4;
       --dark: #2f3441;
+      --brown: #3e2721;
     }
 
     * {
@@ -207,38 +208,41 @@ const base = import.meta.env.BASE_URL;
     /* === CONTACT ============= */
     /* ========================= */
 
-  :global(.contact-wrapper) {
-  display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
+    :global(.contact-wrapper) {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
       gap: 3rem;
-      padding: 3rem;
+      padding: 3.2rem;
       margin-top: 3rem;
-      background: var(--beige);
-      border-radius: 10px;
 
-      /* Neumorphisme subtil */
+      background: var(--beige);
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.03);
+
       box-shadow:
+        0 18px 40px rgba(0,0,0,0.08),
         inset 4px 4px 8px rgba(0,0,0,0.04),
         inset -4px -4px 8px rgba(255,255,255,0.6);
     }
 
     :global(.contact-image) {
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
     }
 
     :global(.contact-image img) {
       width: 100%;
       height: 100%;
-      min-height: 520px;
+      min-height: 540px;
       object-fit: cover;
       display: block;
     }
 
     :global(.contact-form) {
-      background: ##f6f4ef;
-      padding: 2.8rem;
-      border-radius: 10px;
+      background: var(--bg);
+      padding: 3rem;
+      border-radius: 12px;
+
       box-shadow:
         6px 6px 18px rgba(0,0,0,0.08),
         -6px -6px 18px rgba(255,255,255,0.7);
@@ -258,10 +262,11 @@ const base = import.meta.env.BASE_URL;
 
     :global(.contact-field input),
     :global(.contact-field textarea) {
-      background: var(--beige);
+      width: 100%;
+      background: var(--bg);
       border: none;
-      border-radius: 6px;
-      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
       font-family: inherit;
       font-size: 0.95rem;
       box-shadow:
@@ -270,21 +275,24 @@ const base = import.meta.env.BASE_URL;
     }
 
     :global(.contact-submit) {
+      width: 100%;
       margin-top: 1.6rem;
-      background: var(--dark);
+      background: var(--brown);
       color: #fff;
       border: none;
-      border-radius: 6px;
-      padding: 0.9rem 1.6rem;
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 0.95rem;
       cursor: pointer;
+
+      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
     }
 
     :global(.contact-social) {
-      margin-top: 1.8rem;
+      margin-top: 2rem;
       font-size: 0.9rem;
     }
 
-    /* Responsive */
     @media (max-width: 900px) {
       :global(.contact-wrapper) {
         grid-template-columns: 1fr;
@@ -320,9 +328,7 @@ const base = import.meta.env.BASE_URL;
   </main>
 
   <footer>
-    <p>
-      © {new Date().getFullYear()} — Pierre Barthès · Maçonnerie traditionnelle & patrimoine
-    </p>
+    <p>© {new Date().getFullYear()} — Pierre Barthès · Maçonnerie traditionnelle & patrimoine</p>
   </footer>
 </body>
 </html>
