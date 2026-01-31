@@ -376,6 +376,98 @@ body {
         min-height: 280px;
       }
     }
+/* ========================= */
+/* === CONTACT RESPONSIVE ++ */
+/* ========================= */
+
+/* Sécurité globale */
+:global(.contact-section),
+:global(.contact-wrapper),
+:global(.contact-form),
+:global(form) {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Champs robustes */
+:global(.contact-field input),
+:global(.contact-field textarea) {
+  min-width: 0;
+}
+
+/* ========================= */
+/* === TABLET & DOWN ======= */
+/* ========================= */
+
+@media (max-width: 700px) {
+  :global(.contact-wrapper) {
+    padding: 1.8rem;
+    gap: 2.2rem;
+  }
+
+  :global(.contact-form) {
+    padding: 2rem;
+  }
+}
+
+/* ========================= */
+/* === SMALL MOBILE ======== */
+/* ========================= */
+
+@media (max-width: 420px) {
+  :global(.contact-wrapper) {
+    padding: 1.4rem;
+  }
+
+  :global(.contact-form) {
+    padding: 1.6rem;
+  }
+
+  :global(.contact-form h2) {
+    font-size: 1.6rem;
+  }
+
+  :global(.contact-location) {
+    font-size: 0.85rem;
+  }
+
+  :global(.contact-field label) {
+    font-size: 0.85rem;
+  }
+
+  :global(.contact-field input),
+  :global(.contact-field textarea) {
+    padding: 0.75rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  :global(.contact-submit) {
+    padding: 0.85rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ========================= */
+/* === VERY NARROW ========= */
+/* ========================= */
+
+@media (max-width: 340px) {
+  :global(.contact-wrapper) {
+    padding: 1.1rem;
+  }
+
+  :global(.contact-form) {
+    padding: 1.2rem;
+  }
+
+  :global(.contact-form h2) {
+    font-size: 1.45rem;
+  }
+
+  :global(.contact-submit) {
+    padding: 0.75rem;
+  }
+}
 
     footer p {
       font-size: 0.85rem;
