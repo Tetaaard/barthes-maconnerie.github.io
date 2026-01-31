@@ -1,29 +1,100 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Contact — Barthès Maçonnerie">
-  <section>
-    <h2>Contact</h2>
+  <section class="contact-section">
+    <div class="contact-wrapper">
 
-    <p>
-      Pour toute demande d’information, de devis ou d’échange autour de votre
-      projet, vous pouvez contacter l’atelier.
-    </p>
+      <!-- Image gauche -->
+      <div class="contact-image">
+        <img
+          src={`${base}images/contact.jpg`}
+          alt="Atelier de maçonnerie traditionnelle"
+        />
+      </div>
 
-    <p>
-      <strong>Pierre Barthès</strong><br />
-      Maçonnerie traditionnelle & restauration du patrimoine
-    </p>
+      <!-- Formulaire droite -->
+      <div class="contact-form">
+        <h2>Contact</h2>
 
-    <p>
-      📧 Email : <a href="">contact@barthes-maconnerie.fr</a><br />
-      📍 Intervention principalement en France
-    </p>
+        <p>
+          Un projet, une question, un devis ?<br />
+          N’hésitez pas à prendre contact.
+        </p>
 
-    <p>
-      Un premier échange permet d’étudier la faisabilité et l’approche la plus
-      respectueuse de votre bâti.
-    </p>
+        <form
+          action="https://formsubmit.co/garance.tartas@gmail.com"
+          method="POST"
+        >
+          <!-- Configuration FormSubmit -->
+          <input
+            type="hidden"
+            name="_subject"
+            value="Nouveau message — Barthès Maçonnerie"
+          />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+
+          <!-- Redirection après envoi -->
+          <input
+            type="hidden"
+            name="_next"
+            value="https://tetaaard.github.io/barthes-maconnerie.github.io/merci/"
+          />
+
+          <!-- Anti-spam invisible -->
+          <input type="text" name="_honey" style="display:none" />
+
+          <div class="contact-field">
+            <label for="name">Nom</label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              placeholder="Votre nom"
+              required
+            />
+          </div>
+
+          <div class="contact-field">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Votre email"
+              required
+            />
+          </div>
+
+          <div class="contact-field">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Parlez-nous de votre projet…"
+              required
+            ></textarea>
+          </div>
+
+          <button class="contact-submit" type="submit">
+            Envoyer
+          </button>
+        </form>
+
+        <div class="contact-social">
+          📷 Retrouvez l’atelier sur
+          <a
+            href="https://www.instagram.com/barthes_maconnerie/"
+            target="_blank"
+            rel="noopener"
+          >
+            Instagram
+          </a>
+        </div>
+      </div>
+    </div>
   </section>
 </BaseLayout>
